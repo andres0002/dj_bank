@@ -1,0 +1,78 @@
+{% extends 'admin/base_administrador.html' %}
+{% load static %}
+{% block styles %}
+{% endblock %}
+
+{% block content %}
+    {% include 'admin/alerts.html' %}
+    <div class="page-header">
+        <div class="row">
+            <h1 class="col-xs-12 col-sm-4 text-center text-left-sm">
+                <i class="fa fa-edit page-header-icon"></i>
+                &nbsp;&nbsp;Perfil Administrador
+            </h1>
+        </div>
+    </div>
+    <div class="profile-full-name">
+        <span class="text-semibold">
+            <i class="fa fa-edit page-header-icon"></i>&nbsp;Datos Administrador
+        </span>
+    </div>
+    <div class="right-col">
+        <hr class="profile-content-hr no-grid-gutter-h">
+        <div class="profile-content">
+            <div class="panel">
+                <br><br>
+                <form method="post" id="form_usuario" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    {% for field in form %}
+                        <div class="form-group">
+                            {{ field.errors }}
+                            <label for="jq-validation-url" class="col-sm-3 control-label">
+                                <strong>{{ field.label }}</strong>
+                            </label>
+                            <div class="col-sm-9">
+                                {{ field }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <br>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <button type="submit" class="btn btn-primary">
+                                <span class="btn-label icon fa fa-pencil"></span>
+                                Modificar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+        init.push(function ()
+        {
+            $('body').addClass("page-profile");
+            $('#item_usuario').addClass("active");
+
+        });
+        window.PixelAdmin.start(init);
+    </script>
+
+    {% block scripts_crud %}
+        <script>
+            $('#id_cedula').prop('readonly',true);
+            $('#id_usuid').attr('style', 'pointer-events: none;');
+            $('#id_rol').attr('style', 'pointer-events: none;');
+        </script>
+    {% endblock %}
+{% endblock %}
+
+
+
+

@@ -1,0 +1,73 @@
+{% extends 'admin/base_administrador.html' %}
+
+{% block styles %}
+{% endblock %}
+
+{% block content %}
+    {% include 'admin/alerts.html' %}
+    <div class="page-header">
+        <div class="row">
+            <!-- Page header, center on small screens -->
+            <h1 class="col-xs-12 col-sm-4 text-center text-left-sm">
+                <i class="fa fa-edit page-header-icon"></i>&nbsp;&nbsp;Cuentas
+            </h1>
+            {% comment %}<a style="float:right; margin-right: 40px; font-family: Calibri; font-size: 20px;" href="{% url 'user:admin:visualizar_cliente_hipervinculo' user.pk %}">
+                <span class="btn-label icon fa fa-user"></span>
+                Datos Usuario
+            </a>{% endcomment %}
+            <div class="col-xs-12 col-sm-8">
+                <div class="row">
+                    <hr class="visible-xs no-grid-gutter-h">
+                    <!-- "Create project" button, width=auto on desktops -->
+                    <!-- Margin -->
+                    <div class="visible-xs clearfix form-group-margin"></div>
+                    <!-- Search field -->
+                </div>
+            </div>
+        </div>
+    </div> <!-- / .page-header -->
+    <!-- / Javascript -->
+    <div class="panel">
+        {% csrf_token %}
+        <div class="panel-body">
+            <div class="table-primary">
+                <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="jq-datatables-example">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Codigo Cuenta</th>
+                            <th>Nombre Cuenta</th>
+                            <th>Estado</th>
+                            <th>Cliente</th>
+                            <th>Saldo</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for cuenta in cuentas %}
+                            <tr class="odd gradeX">
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ cuenta.codigo_cuenta }}</td>
+                                <td>{{ cuenta.nombre_cuenta }}</td>
+                                <td>{{ cuenta.estado }}</td>
+                                <td>{{ cuenta.cliente }}</td>
+                                <td>{{ cuenta.saldo }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        init.push(function ()
+        {
+            $('#jq-datatables-example').dataTable();
+            $('#jq-datatables-example_wrapper .table-caption').text('Listado de Cuentas');
+            $('#jq-datatables-example_wrapper .dataTables_filter input').attr('placeholder', 'Buscar...');
+        });
+    </script>
+{% endblock %}

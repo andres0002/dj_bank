@@ -1,0 +1,20 @@
+{% extends 'admin/base_crud_cliente.html' %}
+
+{% block titulo_formulario_cliente %}
+    <i class="fa fa-edit page-header-icon"></i>&nbsp;Modificar Cliente
+{% endblock %}
+
+{% block boton_accion_cliente %}
+    <button type="submit" class="btn btn-primary">
+        <span class="btn-label icon fa fa-pencil"></span>
+        Modificar
+    </button>
+{% endblock %}
+
+{% block scripts_crud %}
+    <script>
+        $('#id_cedula').prop('readonly', true);
+        $('#id_rol').attr('style', 'pointer-events: none;');
+        $('#id_usuid').attr('style', 'pointer-events: none;');
+    </script>
+{% endblock %}

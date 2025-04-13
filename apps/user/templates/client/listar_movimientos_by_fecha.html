@@ -1,0 +1,70 @@
+{% extends 'client/base_cliente.html' %}
+{% load static %}
+{% block styles %}
+{% endblock %}
+
+{% block content %}
+    {% include 'client/alerts.html' %}
+    <div class="page-header">
+        <div class="row">
+            <h1 class="col-xs-12 col-sm-4 text-center text-left-sm">
+                <i class="fa fa-edit page-header-icon"></i>
+                &nbsp;&nbsp;Generar Reporte By Fecha
+            </h1>
+        </div>
+    </div>
+    <div class="panel" style="border-radius: 10px 10px 10px 10px; width: 250px; height: 340px">{% csrf_token %}
+        <form method="post" id="form_usuario" enctype="multipart/form-data" style="position: center;">{% csrf_token %}
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Generar Reporte By Fecha
+            <br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fecha Inicio
+            <br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="fecha_inicio" required style="border-radius: 10px 10px 10px 10px"/>
+            <br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fecha Fin
+            <br />
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="fecha_fin" required style="border-radius: 10px 10px 10px 10px"/>
+            <br />
+            <br />
+            <div class="form-group">
+                <a href="listar_movimientos_por_fecha.html">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-primary">
+                        <span class="btn-label icon fa fa-print"></span>
+                        Generar Reporte
+                    </button>
+                </a>
+            </div>
+        </form>
+        <a href="{% url 'user:client:listar_movimientos' %}">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn  btn-labeled btn-primary">
+                <span class="btn-label icon fa fa-arrow-left"></span>
+                Salir
+            </button>
+        </a>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+        init.push(function ()
+        {
+            $('body').addClass("page-profile");
+            $('#item_usuario').addClass("active");
+        });
+
+        window.PixelAdmin.start(init);
+    </script>
+
+    {% block scripts_crud %}
+    {% endblock %}
+{% endblock %}
+
+
+
+

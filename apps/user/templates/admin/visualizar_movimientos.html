@@ -1,0 +1,23 @@
+{% extends 'admin/base_crud_movimiento.html' %}
+
+{% block titulo_formulario_movimientos %}
+    <i class="fa fa-eye page-header-icon"></i>&nbsp;Visualizar Movimiento
+{% endblock %}
+
+{% block boton_accion_movimientos %}
+{% endblock %}
+
+{% block scripts_crud %}
+    <script>
+        $('#form_movimiento').find("input[type='text'], input[type='number'], input[type='file'], select, textarea").each(function (index, element)
+        {
+            $(element).prop('readonly', true);
+            $(element).prop('disabled', true);
+        });
+
+        $('#form_movimiento').find("select").each(function (index, element)
+        {
+            $(element).attr('style', 'pointer-events: none;');
+        });
+    </script>
+{% endblock %}

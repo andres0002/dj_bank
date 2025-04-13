@@ -1,0 +1,23 @@
+{% extends 'admin/base_crud_cliente.html' %}
+
+{% block titulo_formulario_cliente %}
+    <i class="fa fa-eye page-header-icon"></i>&nbsp;Visualizar Cliente
+{% endblock %}
+
+{% block boton_accion_cliente %}
+{% endblock %}
+
+{% block scripts_crud %}
+    <script>
+        $('#form_cliente').find("input[type='text'], input[type='number'], input[type='file'], select, textarea").each(function (index, element)
+        {
+            $(element).prop('readonly', true);
+            $(element).prop('disabled', true);
+        });
+
+        $('#form_cliente').find("select").each(function (index, element)
+        {
+            $(element).attr('style', 'pointer-events: none;');
+        });
+    </script>
+{% endblock %}

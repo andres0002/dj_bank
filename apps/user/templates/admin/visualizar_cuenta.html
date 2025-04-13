@@ -1,0 +1,23 @@
+{% extends 'admin/base_crud_cuenta.html' %}
+
+{% block titulo_formulario_cuentas %}
+    <i class="fa fa-eye page-header-icon"></i>&nbsp;Visualizar Cuenta
+{% endblock %}
+
+{% block boton_accion_cuentas %}
+{% endblock %}
+
+{% block scripts_crud %}
+    <script>
+        $('#form_cuenta').find("input[type='text'], input[type='number'], input[type='file'], select, textarea").each(function (index, element)
+        {
+            $(element).prop('readonly', true);
+            $(element).prop('disabled', true);
+        });
+
+        $('#form_cuenta').find("select").each(function (index, element)
+        {
+            $(element).attr('style', 'pointer-events: none;');
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'admin/base_crud_cuenta.html' %}
+
+{% block titulo_formulario_cuentas %}
+    <i class="fa fa-edit page-header-icon"></i>&nbsp;Modificar Cuenta
+{% endblock %}
+
+{% block boton_accion_cuentas %}
+    <button type="submit" class="btn btn-primary">
+        <span class="btn-label icon fa fa-pencil"></span>
+        Modificar
+    </button>
+{% endblock %}
+
+{% block scripts_crud %}
+    <script>
+        $('#id_codigo_cuenta').prop('readonly', true);
+    </script>
+{% endblock %}
