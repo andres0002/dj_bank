@@ -9,6 +9,8 @@ from django.contrib.auth.models import User
 class Ciudad(models.Model):
     codigo_ciudad = models.CharField(max_length=10, primary_key=True)
     nombre_ciudad = models.CharField(max_length=25)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):        #__unicode__
         return self.nombre_ciudad
@@ -31,6 +33,8 @@ class Cliente(models.Model):
     codigo_ciudad = models.ForeignKey(Ciudad, max_length=10, on_delete=models.CASCADE)
     usuid = models.OneToOneField(User, on_delete=models.CASCADE)
     rol = models.CharField(max_length=20, choices=ROL_CHOICES)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.nombre
@@ -55,6 +59,8 @@ class Cuenta(models.Model):
     estado = models.CharField(max_length=15, choices=ESTADO)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     saldo = models.FloatField(default=15000)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.nombre_cuenta
@@ -75,6 +81,8 @@ class Movimiento(models.Model):
     fecha = models.DateField()
     tipo = models.CharField(max_length=15, choices=TIPO_MOVIMIENTO)
     saldo = models.FloatField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.tipo
